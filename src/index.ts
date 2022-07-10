@@ -1,4 +1,4 @@
-import { GlobalController } from './layer/global.controller';
+import { GlobalController } from './layers/global.controller';
 
 export interface Bindings {
     SERVICE: string;
