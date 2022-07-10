@@ -1,3 +1,5 @@
+import { GlobalController } from './layer/global.controller';
+
 export interface Bindings {
     SERVICE: string;
 
@@ -12,8 +14,8 @@ const worker: ExportedHandler<Bindings> = {
 
     async fetch(req: Request, env: Bindings) {
 
-      return new Response('hello');
-      
+      return await new GlobalController(req, env).route();
+
     }
 
 }
