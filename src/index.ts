@@ -1,4 +1,4 @@
-import { Router } from 'itty-router';
+import { GlobalController } from './layer/global.controller';
 
 export interface Bindings {
     SERVICE: string;
@@ -14,19 +14,7 @@ const worker: ExportedHandler<Bindings> = {
 
     async fetch(req: Request, env: Bindings) {
 
-      const router = Router();
-
-      router.all('*', (req: Request) => {
-
-        const url = new URL(req.url);
-
-        return new Response(`${req.method} ${url.pathname} is not supported!`, {
-          status: 404
-        });
-
-      });
-
-      return router.handle(req);
+      return await new GlobalController(req, env).route();
 
     }
 
