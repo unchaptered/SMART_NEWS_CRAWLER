@@ -12,11 +12,7 @@ export interface Bindings {
 
 const worker: ExportedHandler<Bindings> = {
 
-    async fetch(req: Request, env: Bindings) {
-
-      return await new GlobalController(req, env).route();
-
-    }
+  'fetch': async (req: Request, env: Bindings) => await new GlobalController(req, env).route()
 
 }
 
