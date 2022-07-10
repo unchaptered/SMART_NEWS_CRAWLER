@@ -1,11 +1,15 @@
 import { Router } from 'itty-router';
 import { Bindings } from '..';
 
+import { GlobalService } from './layer.loader';
+
 export class GlobalController {
 
     private req: Request;
     private env: Bindings;
     private router: Router;
+
+    private globalService: GlobalService;
 
     constructor(req: Request, env: Bindings) {
 
@@ -22,6 +26,8 @@ export class GlobalController {
             });
 
         });
+
+        this.globalService = new GlobalService();
 
     }
 
